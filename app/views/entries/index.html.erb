@@ -6,7 +6,7 @@
 
 <% @entries.each do |entry| %>
 <div class="entry">
-  <strong><%= entry.title %></strong>
+  <strong><%= entry.title %></strong> by @<%= entry.user.handle %>
   <p><%= entry.photo %></p>
   <p><%= entry.description %></p>
   <div class="meta">
