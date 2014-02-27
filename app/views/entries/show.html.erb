@@ -17,7 +17,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @entry.user_id %>
+  <%= @entry.user.handle %>
 </p>
 
 <%= link_to 'Edit', edit_entry_path(@entry) %> |
