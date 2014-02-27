@@ -1,24 +1,37 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, class: "form-horizontal"}) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <%= f.input :email, :autofocus => true %>
+  <div><%= f.label :first_name %><br />
+  <%= f.email_field :first_name, :autofocus => true %></div>
+
+  <div><%= f.label :last_name %><br />
+  <%= f.email_field :last_name, :autofocus => true %></div>
+
+  <div><%= f.label :profile_picture %><br />
+  <%= f.email_field :profile_picture, :autofocus => true %></div>
+
+  <div><%= f.label :contact_number %><br />
+  <%= f.email_field :contact_number, :autofocus => true %></div>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <%= f.input :password, :autocomplete => "off" %>
-  <%= f.input :password_confirmation %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :handle %> 
-  <%= f.input :profile_picture %>
-  <%= f.input :contact_number %>
-  <%= f.input :current_password %>
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div class="form-actions"><%= f.button :submit, "Update Profile" %></div>
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <%= f.password_field :current_password %></div>
+
+  <div><%= f.submit "Update" %></div>
 <% end %>
 
 <h3>Cancel my account</h3>
