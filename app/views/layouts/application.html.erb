@@ -15,12 +15,18 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<span class="brand">
-					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), entries_path %>
+					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), entries_path %></span>
 				<ul class="nav">
 					<li><%= link_to "All Statuses", statuses_path %></li>
 				</ul>
 				<ul class="nav pull-right">
-					<li><%= link_to current_user.full_name, "#" %></li>
+					<% if user_signed_in? %>
+						<li><%= link_to current_user.full_name, "#" %></li>
+						<li><%= link_to "Log out", destroy_user_session_path, method: :delete, confirm: "Sure?" %></li>
+					<% else %>
+						<li><%= link_to "Sign up", new_user_registration_path %></li>
+						<li><%= link_to "Login", new_user_session_path %></li>
+					<% end %>
 				</ul>
 				</div>
 			</div>
