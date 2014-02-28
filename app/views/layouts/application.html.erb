@@ -15,17 +15,18 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<span class="brand">
-					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), entries_path %></span>
-				<ul class="nav">
-					<li><%= link_to "All Statuses", statuses_path %></li>
-				</ul>
+					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), "#" %></span>
 				<ul class="nav pull-right">
 					<% if user_signed_in? %>
-						<li><%= link_to current_user.full_name, "#" %></li>
-						<li><%= link_to "Log out", destroy_user_session_path, method: :delete, confirm: "Sure?" %></li>
+						<li><%= link_to (image_tag("HEADER_FOOTER/Home.png")+"Feed").html_safe, entries_path %></li>
+						<li><%= link_to (image_tag(current_user.profile_picture)+current_user.full_name).html_safe, "#" %>
+						</li>
+						<li><%= link_to (image_tag("HEADER_FOOTER/Logout.png")+"Log out"), destroy_user_session_path, method: :delete, confirm: "Sure?" %>
+						</li>
 					<% else %>
-						<li><%= link_to "Sign up", new_user_registration_path %></li>
-						<li><%= link_to "Login", new_user_session_path %></li>
+						<li><%= link_to (image_tag("HEADER_FOOTER/About.png")+"About").html_safe, "#" %></li>
+						<li><%= link_to (image_tag("HEADER_FObbbOTER/Login.png")+"Sign up").html_safe, new_user_registration_path %></li>
+						<li><%= link_to (image_tag("HEADER_FOOTER/Login.png")+"Log in"), new_user_session_path %></li>
 					<% end %>
 				</ul>
 				</div>
