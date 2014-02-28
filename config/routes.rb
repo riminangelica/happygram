@@ -1,8 +1,6 @@
 Happygram::Application.routes.draw do
   devise_for :users
-  
-  resources :statuses
-  resources :entries
+    resources :entries
 
   root to: 'entries#index'
 

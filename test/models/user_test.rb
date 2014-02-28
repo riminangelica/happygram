@@ -14,7 +14,8 @@ class UserTest < ActiveSupport::TestCase
   	assert !user.errors[:handle].empty?
   end
 
-  test "a user should have a handle without spaces" do
-
-  end
+  # test "a user should have a handle without spaces" do
+  # 	user = User.new
+  # 	user.handle = 
+  # end
 end
