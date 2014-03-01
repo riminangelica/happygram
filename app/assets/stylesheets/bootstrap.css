@@ -228,7 +228,8 @@ body {
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
-  padding: 120px;
+  /*  removed because of the awkward white
+  padding: 120px; */
   font-family: 'Montserrat';
 }
 
@@ -4381,8 +4382,6 @@ input[type="submit"].btn.btn-mini {
   border-radius: 4px;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#fff2f2f2', GradientType=0);
   *zoom: 1;
-  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
 }
 
@@ -6159,4 +6158,26 @@ a.badge:focus {
 
 .affix {
   position: fixed;
+}
+
+#login
+{
+  position: absolute; 
+  left: 0; 
+  width: 100%; 
+  margin: 0 auto; 
+  margin-bottom: 150px; 
+  background: url('LOGIN/LoginBG.png') no-repeat center center fixed; 
+  background-position: center; 
+  min-width: 100%; 
+  max-width: 100%; 
+  background-size:cover;
+}
+
+#login-content
+{
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 100%;
 }
