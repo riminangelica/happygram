@@ -2,6 +2,11 @@ Happygram::Application.routes.draw do
   devise_for :users
     resources :entries
 
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+    get 'register', to: 'devise/registrations#new'
+  end
+
   root to: 'entries#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
