@@ -228,8 +228,8 @@ body {
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
-  /*  removed because of the awkward white
-  padding: 120px; */
+  /* needs padding for flash notifications */
+  padding: 120px;
   font-family: 'Montserrat';
 }
 
@@ -4607,7 +4607,7 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav > li > a {
   float: none;
   padding: 10px 15px 10px;
-  color: #777777;
+  color: #ffffff;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;
 }
@@ -4618,7 +4618,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover {
-  color: #333333;
+  color: #cccccc;
   text-decoration: none;
   background-color: transparent;
 }
