@@ -11,13 +11,28 @@ class EntriesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:entries)
   end
 
-  test "should get new" do
+  test "should be redirected when not logged in" do
     get :new
     assert_response :redirect
     assert_redirected_to new_user_session_path
   end
 
-  test "should create entry" do
+  test "should render the feed page when logged in" do
+    sign_in users(:rimi)
+    get :index
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should be logged in to post an entry" do
+    post :create, entry: { title: "Hello", description: "blah", photo: "s.png" }
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
+  end
+
+  test "should create entry when logged in" do
+    sign_in users(:rimi)
+
     assert_difference('Entry.count') do
       post :create, entry: { description: @entry.description, photo: @entry.photo, title: @entry.title }
     end

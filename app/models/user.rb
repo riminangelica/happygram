@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
  	validates :first_name, presence: true
  	validates :last_name, presence: true
  	validates :handle, presence: true, uniqueness: true, format: {
-    with: /\A[a-zA-Z\-\_]+\Z/,
+    with: /\A[a-zA-Z0-9\-\_]+\Z/,
     message: "must be formatted correctly."
   }
  	validates :email, presence: true, uniqueness: true
