@@ -12,6 +12,22 @@ gem 'protected_attributes'
 
 gem 'simple_form'
 
+gem 'state_machine'
+
+gem 'draper', '~> 1.0'
+
+gem 'js-routes'
+
+group :test do
+	gem 'shoulda'
+	gem 'factory_girl_rails'
+end
+
+group :development, :test do
+	gem 'sqlite3'
+	gem 'log_buddy'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
