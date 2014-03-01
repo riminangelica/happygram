@@ -1,4 +1,5 @@
 Happygram::Application.routes.draw do
+  get "profiles/show"
   devise_for :users
     resources :entries
     get 'feed', to: 'entries#index', as: :feed
