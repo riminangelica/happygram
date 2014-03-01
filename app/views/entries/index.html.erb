@@ -3,18 +3,25 @@
 </div>
 
 <%= link_to "Post a New Entry", new_entry_path, class: "btn" %>
-
+<br><br>
 <% @entries.each do |entry| %>
 <div class="entry">
-  <strong><%= entry.title %></strong> by <%= entry.user.username %>
-  <p><%= entry.photo %></p>
-  <p><%= entry.description %></p>
-  <div class="meta">
-    <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %>
-    <span class="admin"> | 
-     <%= link_to "Edit", edit_entry_path(entry) %> | 
-      <%= link_to "Delete", entry, method: :delete, confirm: "Are you sure you want to delete this entry?" %>
-    </span>
-  </div>  
+  <div class="row">
+    <div class="span1">
+      <%= image_tag entry.user.gravatar_url %>
+    </div>
+    <div class="span7">
+      <strong><%= entry.title %></strong> by <%= entry.user.username %>
+      <p><%= entry.photo %></p>
+      <p><%= entry.description %></p>
+      <div class="meta">
+        <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %>
+        <span class="admin"> | 
+         <%= link_to "Edit", edit_entry_path(entry) %> | 
+          <%= link_to "Delete", entry, method: :delete, confirm: "Are you sure you want to delete this entry?" %>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 <% end %>
