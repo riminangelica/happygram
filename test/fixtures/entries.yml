@@ -5,9 +5,11 @@ one:
   description: MyText
   photo: MyString
   user_id: 1
+  user: rimi
 
 two:
   title: MyString
   description: MyText
   photo: MyString
   user_id: 1
+  user: rimi

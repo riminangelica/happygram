@@ -13,12 +13,13 @@ class EntriesControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_response :redirect
+    assert_redirected_to new_user_session_path
   end
 
   test "should create entry" do
     assert_difference('Entry.count') do
-      post :create, entry: { description: @entry.description, photo: @entry.photo, title: @entry.title, user_id: @entry.user_id }
+      post :create, entry: { description: @entry.description, photo: @entry.photo, title: @entry.title }
     end
 
     assert_redirected_to entry_path(assigns(:entry))
@@ -35,7 +36,7 @@ class EntriesControllerTest < ActionController::TestCase
   end
 
   test "should update entry" do
-    patch :update, id: @entry, entry: { description: @entry.description, photo: @entry.photo, title: @entry.title, user_id: @entry.user_id }
+    patch :update, id: @entry, entry: { description: @entry.description, photo: @entry.photo, title: @entry.title }
     assert_redirected_to entry_path(assigns(:entry))
   end
 

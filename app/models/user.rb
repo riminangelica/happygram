@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
  	def username
  		"@#{handle}"
  	end
+
+ 	# def avatar
+ 	# 	if profile_picture
+ 	# end
 end
