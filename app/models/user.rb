@@ -30,9 +30,9 @@ class User < ActiveRecord::Base
  		"@#{handle}"
  	end
 
- 	# def avatar
- 	# 	if profile_picture
- 	# end
+	def to_param
+		handle
+	end
 
  	def gravatar_url
  		stripped_email = email.strip
