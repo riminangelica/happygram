@@ -18,7 +18,11 @@ Happygram::Application.routes.draw do
     delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
   end
 
-  resources :friendships
+  resources :friendships do
+    member do
+      put :accept
+    end
+  end
 
   root to: 'entries#index'
 

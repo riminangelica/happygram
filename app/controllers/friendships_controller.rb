@@ -5,6 +5,16 @@ class FriendshipsController < ApplicationController
 		@friendships = current_user.friendships.all
 	end
 
+	def accept
+		@friendship = current_user.friendships.find(params[:id])
+		if @friendship.accept!
+			flash[:success] = "You are now friends with #{@friendship.friend.first_name}!"
+		else
+			flash[:error] = "That friendship could not be accepted. :("
+		end
+		redirect_to friendships_path
+	end
+
 	def new
 		if params[:friend_id]
 			@friend = User.where(handle: params[:friend_id]).first
@@ -19,17 +29,22 @@ class FriendshipsController < ApplicationController
 	def create
 		if params[:friendship] && params[:friendship].has_key?(:friend_id)
 			@friend = User.where(handle: params[:friendship][:friend_id]).first
-			@friendship = current_user.friendships.new(friend: @friend)
-			if @friendship.save
-				flash[:success] = "You are now friends with #{@friend.full_name}."
+			@friendship = Friendship.request(current_user, @friend)
+			if @friendship.new_record?
+				flash[:error] = "There was a problem creating that friend request."
 			else
-				flash[:error] = "There was a problem."
+				flash[:success] = "Friend request sent!"
 			end
-			redirect_to profile_path(@friend.handle)
+			redirect_to profile_path(@friend)
 		else
 			flash[:error] = "Friend required"
 			redirect_to root_path
 		end
+	end
+
+	def edit
+		@friendship = current_user.friendships.find(params[:id])
+		@friend = @friendship.friend
 	end
 
 end

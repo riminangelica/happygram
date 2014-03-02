@@ -18,6 +18,7 @@
 					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), "#" %></span>
 				<ul class="nav pull-right">
 					<% if user_signed_in? %>
+						<li><%= link_to "Friends", friendships_path %></li>
 						<li><%= link_to (image_tag("HEADER_FOOTER/Home.png")+"Feed").html_safe, feed_path %></li>
 						<li><%= link_to (image_tag(current_user.gravatar_url, style: "width:20px")+ " " +current_user.full_name).html_safe, "/#{current_user.handle}" %>
 						</li>

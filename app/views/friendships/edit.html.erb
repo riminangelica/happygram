@@ -1,0 +1,15 @@
+<div class="page-header">
+	<h1>Viewing Friendship</h1>
+</div>
+
+<% if @friendship.requested? %>
+	<h3>Do you reallyw ant to be friends with <%= @friend.first_name %>?</h3>
+<% end %>
+
+<div class="form-actions">
+	<% if @friendship.requested? %>
+		<%= form_for @friendship, url: accept_friendship_path(@friendship), method: :put do |form| %>
+			<%= submit_tag "Accept Friendship", class: 'btn btn-primary' %>
+		<% end %>
+	<% end %>
+</div>
