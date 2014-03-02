@@ -3,7 +3,11 @@
 </div>
 
 <% if @friendship.requested? %>
-	<h3>Do you reallyw ant to be friends with <%= @friend.first_name %>?</h3>
+	<h3>Do you really want to be friends with <%= @friend.first_name %>?</h3>
+<% end %>
+
+<% if @friendship.accepted? %>
+	<h3>You are friends with <%= @friend.first_name %>. Yay!</h3>
 <% end %>
 
 <div class="form-actions">
@@ -11,5 +15,9 @@
 		<%= form_for @friendship, url: accept_friendship_path(@friendship), method: :put do |form| %>
 			<%= submit_tag "Accept Friendship", class: 'btn btn-primary' %>
 		<% end %>
+	<% end %>
+
+	<%= form_for @friendship, url: friendship_path(@friendship), method: :delete do |form| %>
+		<%= submit_tag "Delete Friendship", class: 'btn btn-danger', confirm: "Are you sure you want to unfriend #{@friend.first_name}?" %>
 	<% end %>
 </div>
