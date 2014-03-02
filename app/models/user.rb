@@ -20,7 +20,13 @@ class User < ActiveRecord::Base
 
  	has_many :entries
  	has_many :friendships
- 	has_many :friends, through: :friendships
+ 	has_many :friends, through: :friendships,
+                     conditions: { friendships: { state: 'accepted' } }
+
+  has_many :pending_friendships, class_name: 'Friendship',
+                                 foreign_key: :user_id,
+                                 conditions: { state: 'pending' }
+  has_many :pending_friends, through: :pending_friendships, source: :friend
 
  	def full_name
  		"#{first_name} #{last_name}"
