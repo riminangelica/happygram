@@ -14,7 +14,7 @@ gem 'simple_form'
 
 gem 'state_machine'
 
-gem 'draper', '~> 1.0'
+gem 'draper'
 
 gem 'js-routes'
 
