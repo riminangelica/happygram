@@ -1,6 +1,10 @@
 class FriendshipsController < ApplicationController
-	before_filter :authenticate_user!, only: [:new]
+	before_filter :authenticate_user!, only: [:new, :index]
 	
+	def index
+		@friendships = current_user.friendships.all
+	end
+
 	def new
 		if params[:friend_id]
 			@friend = User.where(handle: params[:friend_id]).first
