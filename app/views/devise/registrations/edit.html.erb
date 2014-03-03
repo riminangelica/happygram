@@ -19,7 +19,7 @@
     <% if current_user.profile_picture? %>
       <%= image_tag current_user.profile_picture.url, style: "width:200px;" %>
     <% end %>
-  </div>
+  </div><br>
   <%= f.input :contact_number %>
   <%= f.input :current_password %>
 
