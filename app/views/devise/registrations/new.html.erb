@@ -1,5 +1,8 @@
-<h2>Sign up</h2>
+<div id="signup">
+  <div id="signup-form">
+    <h2>Sign up</h2>
 
+<<<<<<< HEAD
 <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
@@ -15,5 +18,37 @@
   
   <div><%= f.submit "Sign up" %></div>
 <% end %>
+=======
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+      <div><%= f.label :first_name %>
+        <%= f.text_field :first_name %> </div>
 
-<%= render "devise/shared/links" %>
+      <div><%= f.label :last_name %>
+        <%= f.text_field :last_name %> </div>
+
+      <div><%= f.label :handle %>
+        <%= f.text_field :handle %> </div>
+
+      <div><%= f.label :contact_number %>
+        <%= f.text_field :contact_number %> </div>
+
+      <div><%= f.label :profile_picture %>
+        <%= f.text_field :profile_picture %> </div>
+
+      <div><%= f.label :email %><br />
+      <%= f.email_field :email, :autofocus => true %></div>
+
+      <div><%= f.label :password %><br />
+      <%= f.password_field :password %></div>
+
+      <div><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %></div>
+
+      <div><%= f.submit "Sign up" %></div>
+    <% end %>
+>>>>>>> FETCH_HEAD
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
