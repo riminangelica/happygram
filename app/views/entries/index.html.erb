@@ -13,7 +13,7 @@
         </div>
         <div class="span7">
           <strong><%= entry.title %></strong> by <%= entry.user.username %>
-          <p><%= entry.photo %></p>
+          <p><%= image_tag entry.photo.url %></p>
           <p><%= entry.description %></p>
           <div class="meta">
             <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %>
