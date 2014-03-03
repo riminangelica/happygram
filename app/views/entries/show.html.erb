@@ -24,7 +24,5 @@
         <%= link_to "Delete", @entry, method: :delete, data: { confirm: "Are you sure your want to delete this entry?"} %>
       <% end %>
     </div>
-    <hr>
-    <%= render partial: 'the_comments/tree', locals: { commentable: @entry, comments_tree: @comments } %>
   </div>
 </div>

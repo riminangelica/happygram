@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include TheComments::User
-
 	# attr_accessor :current_password
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
@@ -49,20 +47,6 @@ class User < ActiveRecord::Base
                                  conditions: { state: 'accepted' }
   has_many :accepted_friends, through: :accepted_friendships, source: :friend 
 
-
-
-  def admin?
-    self == User.first
-  end
-
-  def comments_admin?
-    admin?
-  end
-
-  def comments_moderator? comment
-    id == comment.holder_id
-  end
-  
  	def full_name
  		"#{first_name} #{last_name}"
  	end
