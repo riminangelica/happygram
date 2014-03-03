@@ -1,5 +1,13 @@
 <div class="page-header">
-	<h1>Friends</h1>
+	<h1>Friends </h1>
+</div>
+
+<div>
+	<strong>Friend list:</strong>
+	<%= link_to 'Blocked', friendships_path(list: 'blocked') %>
+	<%= link_to 'Requested', friendships_path(list: 'requested') %>
+	<%= link_to 'Accepted', friendships_path(list: 'accepted') %>
+	<%= link_to 'Pending', friendships_path(list: 'pending') %>
 </div>
 
 <% @friendships.each do |friendship| %>
@@ -11,7 +19,7 @@
 		<div class="span7">
 			<strong><%= friend.full_name %></strong><br />
 			<% if friendship.pending? %>
-				<em>Friendship is pending.</em> <%= link_to "Delete request", edit_friendship_path(friendship.friend.handle) %>.
+				<em>Awaiting confirmation.</em> <%= link_to "Cancel request", edit_friendship_path(friendship.friend.handle) %>.
 			<% end %>
 			<% if friendship.requested? %>
 				<em>Friendship requested.</em> <%= link_to "Accept friendship", edit_friendship_path(friendship.friend.handle) %>.

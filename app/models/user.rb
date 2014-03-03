@@ -17,7 +17,6 @@ class User < ActiveRecord::Base
   }
  	validates :email, presence: true, uniqueness: true
 
-
  	has_many :entries
  	has_many :friendships
  	has_many :friends, through: :friendships,
@@ -32,6 +31,16 @@ class User < ActiveRecord::Base
                                  foreign_key: :user_id,
                                  conditions: { state: 'requested' }
   has_many :requested_friends, through: :pending_friendships, source: :friend
+
+  has_many :blocked_friendships, class_name: 'Friendship',
+                                 foreign_key: :user_id,
+                                 conditions: { state: 'blocked' }
+  has_many :blocked_friends, through: :pending_friendships, source: :friend 
+
+  has_many :accepted_friendships, class_name: 'Friendship',
+                                 foreign_key: :user_id,
+                                 conditions: { state: 'accepted' }
+  has_many :accepted_friends, through: :pending_friendships, source: :friend 
 
  	def full_name
  		"#{first_name} #{last_name}"

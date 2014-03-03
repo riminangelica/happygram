@@ -1,7 +1,7 @@
 class FriendshipDecorator < Draper::Decorator
-  delegate_all
   decorates :friendship
-
+  delegate_all
+  
   def friendship_state
   	model.state.titleize
   end
@@ -11,17 +11,7 @@ class FriendshipDecorator < Draper::Decorator
 		when 'pending'
 			"Friend request pending."
 		when 'accepted'
-			"You are friends with #{model.friend.first_name}."
+			"You are friends #{model.friend.first_name}."
     end
   end
-
-  # Define presentation-specific methods here. Helpers are accessed through
-  # `helpers` (aka `h`). You can override attributes, for example:
-  #
-  #   def created_at
-  #     helpers.content_tag :span, class: 'time' do
-  #       object.created_at.strftime("%a %m/%d/%y")
-  #     end
-  #   end
-
 end

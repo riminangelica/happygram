@@ -3,7 +3,11 @@ class FriendshipsController < ApplicationController
 	respond_to :html, :json
 
 	def index
-		@friendships = current_user.friendships.all
+		100.times { puts "blah" }
+		
+		@friendships = FriendshipDecorator.decorate_collection(friendship_association.all)
+		100.times { puts "blah" }
+		100.times { puts @friendships }
 		respond_with @friendships
 	end
 
@@ -77,6 +81,22 @@ class FriendshipsController < ApplicationController
 			flash[:success] = "Friendship destroyed."
 		end
 		redirect_to friendships_path 
+	end
+
+	private
+	def friendship_association
+		case params[:list]
+		when nil
+			current_user.friendships
+		when 'blocked'
+			current_user.blocked_friendships
+		when 'pending'
+			current_user.pending_friendships
+		when 'accepted'
+			current_user.accepted_friendships
+		when 'requested'
+			current_user.requested_friendships
+		end
 	end
 
 end
