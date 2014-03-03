@@ -15,7 +15,9 @@
   <%= f.input :description, input_html: { rows: 4, class: 'input-xxlarge' } %>
   <%= f.input :photo %>
   <div class="controls">
-    <%= image_tag @entry.photo.url, style: "width:200px;" %>
+    <% if @entry.photo? %>
+      <%= image_tag @entry.photo.url, style: "width:200px;" %>
+    <% end %>
   </div>
 
   <div class="form-actions">
