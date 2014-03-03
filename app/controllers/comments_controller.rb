@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
 
   # Define your restrict methods and use them like this:
   #
-  # before_action :user_required,  except: %w[index create]
-  # before_action :owner_required, except: %w[index create]
-  # before_action :admin_required, only:   %w[total_draft total_published total_deleted total_spam]
+  before_action :user_required,  except: %w[index create]
+  before_action :owner_required, except: %w[index create]
+  before_action :admin_required, only:   %w[total_draft total_published total_deleted total_spam]
   
   include TheComments::Controller
 
