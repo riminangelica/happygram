@@ -4,7 +4,7 @@ module ApplicationHelper
 	end
 
 	def avatar_profile_link(user, image_options={}, html_options={})
-		link_to(image_tag(user.gravatar_url, image_options), profile_path(user.handle), html_options)
+		link_to(image_tag(user.profile_picture.url, image_options), profile_path(user.handle), html_options)
 	end
 
 	def page_header(&block)

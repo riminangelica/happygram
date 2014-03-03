@@ -15,6 +15,11 @@
   <%= f.input :last_name %>
   <%= f.input :handle %> 
   <%= f.input :profile_picture %>
+  <div class="controls">
+    <% if current_user.profile_picture? %>
+      <%= image_tag current_user.profile_picture.url, style: "width:200px;" %>
+    <% end %>
+  </div>
   <%= f.input :contact_number %>
   <%= f.input :current_password %>
 

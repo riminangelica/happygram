@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
     message: "must be formatted correctly."
   }
  	validates :email, presence: true, uniqueness: true
+  validates :profile_picture, attachment_presence: true
+  
+
+  has_attached_file :profile_picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
 
  	has_many :entries
  	has_many :friendships
