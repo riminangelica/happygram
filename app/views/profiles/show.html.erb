@@ -3,20 +3,15 @@
     <%= avatar_profile_link @user, {}, class: '' %>
     <%= @user.full_name %>
   </h1>
+  <% if signed_in? && @user != current_user %>
 	<div id="friend-entry">
-    <% if @user.friends.count > 0 %>
-      <%= @user.friends.count %> Friends<br>
-    <% else %>
-      <%= @user.first_name %> currently has no friends... Add them now!<br>
-    <% end %>
-    <% if signed_in? && @user != current_user %>
-  	  <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-  	    <%= link_to "Edit Friendship", edit_friendship_path(friend_id: @user), class: 'btn' %>
-  	  <% else %>
-  	    <%= link_to "Add #{@user.first_name}", new_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
-  	  <% end %>
-    <% end %>
+	  <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+	    <%= link_to "Edit Friendship", edit_friendship_path(friend_id: @user), class: 'btn' %>
+	  <% else %>
+	    <%= link_to "Add Friend", new_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+	  <% end %>
 	</div>
+	<% end %>
 <% end %>
 
 

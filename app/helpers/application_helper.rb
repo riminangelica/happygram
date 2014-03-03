@@ -1,4 +1,11 @@
 module ApplicationHelper
+	def entry_document_link(entry)
+		if entry.document && entry.document_attachment?
+			content_tag(:span, "Attachment", class: "label label-info")
+			link_to(entry.document.attachment_file_name, entry.document.attachment.url)
+		end
+	end
+
 	def can_display_entry?(entry)
 		signed_in? && !current_user.has_blocked?(entry.user) || !signed_in?
 	end

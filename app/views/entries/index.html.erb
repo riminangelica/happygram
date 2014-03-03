@@ -15,6 +15,7 @@
           <strong><%= entry.title %></strong> by <%= entry.user.username %>
           <p><%= entry.photo %></p>
           <p><%= entry.description %></p>
+          <%= entry_document_link(entry) %>
           <div class="meta">
             <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %>
             <% if signed_in? && entry.user == current_user %>

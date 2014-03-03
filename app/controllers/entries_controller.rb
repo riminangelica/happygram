@@ -29,13 +29,14 @@ class EntriesController < ApplicationController
   # GET /entries/1/edit
   def edit
     @entry = current_user.entries.find(params[:id])
+    
   end
 
   # POST /entries
   # POST /entries.json
   def create
     @entry = current_user.entries.new(entry_params)
-
+    
     respond_to do |format|
       if @entry.save
         format.html { redirect_to @entry, notice: 'Your entry has been posted!' }
@@ -51,13 +52,13 @@ class EntriesController < ApplicationController
   # PATCH/PUT /entries/1.json
   def update
     @entry = current_user.entries.find(params[:id])
-    
+    @document = @entry.document
     if params[:entry] && params[:entry].has_key?(:user_id)
       params[:entry].delete(:user_id)
     end
 
     respond_to do |format|
-      if @entry.update_attributes(entry_params)
+      if @entry.update_attributes(entry_params) && @document && @document.update_attributes(params[:entry][:document_attributes])
         format.html { redirect_to @entry, notice: 'Entry was successfully updated.' }
         format.json { head :no_content }
       else
