@@ -18,7 +18,7 @@ gem 'draper'
 
 gem 'js-routes'
 
-gem 'paperclip'
+gem "paperclip", "~> 3.0"
 
 group :test do
 	gem 'shoulda'

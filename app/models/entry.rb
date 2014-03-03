@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-	attr_accessible :title, :description, :photo, :user_id, :document_attributes, :document_id
+	attr_accessible :title, :description, :photo, :user_id, :document_attributes
 	belongs_to :user
 	belongs_to :document
 
@@ -7,6 +7,5 @@ class Entry < ActiveRecord::Base
 
 	validates :title, presence: :true
 	validates :photo, presence: :true
-	validates :user_id, presence: :true
-	#validates :document_attributes, presence: :true	
+	validates :user_id, presence: :true	
 end

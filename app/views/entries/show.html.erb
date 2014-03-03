@@ -10,14 +10,9 @@
 
     <strong><%= @entry.title %></strong>
 
-    <% if @entry.document && @entry.document.attachment? %>
-      lsdfkjsdlkfj
-      <%= entry_document_link @entry %>
-      <hr>
-    <% end %>
-
     <p>
-    	<%= @entry.description %>
+    	<%= @entry.photo %><br>
+      <%= @entry.description %>
     </p>
 
     <hr />
