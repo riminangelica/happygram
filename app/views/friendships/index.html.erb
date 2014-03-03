@@ -6,9 +6,6 @@
 	<% 'active' if params[:list] == '' || params[:list].blank? %>
 		<%= link_to 'All Friends', friendships_path %>
 	
-	<% 'active' if params[:list] == 'blocked' %> | 
-		<%= link_to 'Blocked', friendships_path(list: 'blocked') %>
-	
 	<% 'active' if params[:list] == 'requested' %> | 
 		<%= link_to 'Requested', friendships_path(list: 'requested') %>
 	
@@ -16,7 +13,10 @@
 		<%= link_to 'Accepted', friendships_path(list: 'accepted') %>
 	
 	<% 'active' if params[:list] == 'pending' %> | 
-		<%= link_to 'Pending', friendships_path(list: 'pending') %>
+		<%= link_to 'Pending', friendships_path(list: 'pending') %>s
+
+	<% 'active' if params[:list] == 'blocked' %> | 
+		<%= link_to 'Blocked', friendships_path(list: 'blocked') %>
 </div>
 
 <hr>
@@ -38,6 +38,9 @@
 				<% end %>
 				<% if friendship.accepted? %>
 					<em>Friendship started <%= friendship.updated_at %>.</em> <%= link_to "Update friendship", edit_friendship_path(friendship.friend.handle) %>.
+				<% end %>
+				<% if friendship.blocked? %>
+					<em>You have blocked this user.</em> <%= link_to "Update friendship", edit_friendship_path(friendship.friend.handle) %>.
 				<% end %>
 			</div>
 		</div>
