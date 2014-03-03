@@ -52,13 +52,6 @@ ActiveRecord::Schema.define(version: 20140303141428) do
   add_index "friendships", ["state"], name: "index_friendships_on_state"
   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id"
 
-  create_table "statuses", force: true do |t|
-    t.string   "name"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"

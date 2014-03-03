@@ -229,7 +229,7 @@ body {
   color: #333333;
   background-color: #ffffff;
   /* needs padding for flash notifications */
-  padding: 120px;
+  padding: 100px;
   font-family: 'Montserrat';
 }
 
@@ -6166,7 +6166,6 @@ a.badge:focus {
   left: 0; 
   width: 100%; 
   margin: 0 auto; 
-  margin-bottom: 150px; 
   background: url('LOGIN/LoginBG.png') no-repeat center center fixed; 
   background-position: center; 
   min-width: 100%; 
@@ -6176,8 +6175,11 @@ a.badge:focus {
 
 #login-content
 {
-  display: inline-block;
-  margin: 0 auto;
-  margin-top: 100px;
   width: 100%;
+  margin-left: 500px;
+}
+
+#login-logo img
+{
+  margin-left: 20px;
 }
