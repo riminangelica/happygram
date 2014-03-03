@@ -1,14 +1,14 @@
 class Friendship < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :friend, class_name: 'User', foreign_key: 'friend_id'
-	after_transition on: :block, do: [:block_mutual_friendship!]
 	attr_accessible :user_id, :friend_id, :user, :friend, :state
 
 	after_destroy :delete_mutual_friendship!
 
 	state_machine :state, initial: :pending do
 		after_transition on: :accept, do: [:send_acceptance_email, :accept_mutual_friendship!]
-
+		after_transition on: :block, do: [:block_mutual_friendship!]
+	
 		state :requested
 		state :blocked
 		
