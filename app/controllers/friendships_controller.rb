@@ -53,8 +53,11 @@ class FriendshipsController < ApplicationController
 	end
 
 	def edit
-		@friendship = current_user.friendships.find(params[:id])
-		@friend = @friendship.friend
+			@friend = User.where(handle: params[:id]).first
+			100.times { puts "blah" }
+			100.times { puts @friend.id }
+			@friendship = current_user.friendships.where(friend_id: @friend.id).first.decorate
+			100.times { puts @friendship }
 	end
 
 	def destroy

@@ -2,6 +2,18 @@
 	<h1>Viewing Friendship</h1>
 </div>
 
+<div class="row">
+	<div class="avatar span2">
+		<%= image_tag @friendship.user.gravatar_url %><br>
+		<%= @friendship.user.first_name %>
+	</div>
+	<div class="avatar span2">
+		<%= image_tag @friendship.friend.gravatar_url %><br>
+		<%= @friendship.friend.first_name %>
+	</div>
+</div>
+<hr>
+
 <h3><%= @friendship.sub_message %></h3>
 
 <div class="form-actions">

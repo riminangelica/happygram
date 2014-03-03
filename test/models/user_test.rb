@@ -12,7 +12,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "a user should enter a unique handle" do
   	user = User.new
-  	user.handle = users(:happy).profile_name
+  	user.handle = users(:happy).handle
   	assert !user.save
   	assert !user.errors[:handle].empty?
   end

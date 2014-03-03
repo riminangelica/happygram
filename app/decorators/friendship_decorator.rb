@@ -1,5 +1,5 @@
 class FriendshipDecorator < Draper::Decorator
-  #delegate_all
+  delegate_all
   decorates :friendship
 
   def friendship_state
@@ -8,12 +8,11 @@ class FriendshipDecorator < Draper::Decorator
 
   def sub_message
   	case model.state
-  		when 'pending'
-  			"Do you really want to be friends with #{model.friend.first_name}?"
-  		when 'accepted'
-  			"You are friends with #{model.friend.first_name}."
-
-
+		when 'pending'
+			"Do you really want to be friends with #{model.friend.first_name}?"
+		when 'accepted'
+			"You are friends with #{model.friend.first_name}."
+    end
   end
 
   # Define presentation-specific methods here. Helpers are accessed through
