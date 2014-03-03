@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
                                  conditions: { state: 'accepted' }
   has_many :accepted_friends, through: :accepted_friendships, source: :friend 
 
-  has_many :posts
+
 
   def admin?
     self == User.first

@@ -1,5 +1,9 @@
 class Comment < ActiveRecord::Base
   include TheComments::Comment
+
+  attr_accessible :title, :contacts, :raw_content, :parent_id, :commentable_title, :commentable_url, :ip, :referer, :user_agent, :tolerance_time, :user, :view_token
+
+
   # ---------------------------------------------------
   # Define comment's avatar url
   # Usually we use Comment#user (owner of comment) to define avatar
