@@ -1,4 +1,14 @@
+window.friendships = [];
+
 $(document).ready(function() {
+	$.ajax({
+		url: Routes.friendships_path({format: 'json'}),
+		dataType: 'json',
+		type: 'GET',
+		success: function(data) {
+			window.friendships = data;
+		}
+	});
 
 	$('#add-friendship').click(function(event) {
 		event.preventDefault();
