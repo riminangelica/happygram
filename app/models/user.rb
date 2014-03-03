@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	attr_accessor :current_password
+	# attr_accessor :current_password
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -30,17 +30,17 @@ class User < ActiveRecord::Base
   has_many :requested_friendships, class_name: 'Friendship',
                                  foreign_key: :user_id,
                                  conditions: { state: 'requested' }
-  has_many :requested_friends, through: :pending_friendships, source: :friend
+  has_many :requested_friends, through: :requested_friendships, source: :friend
 
   has_many :blocked_friendships, class_name: 'Friendship',
                                  foreign_key: :user_id,
                                  conditions: { state: 'blocked' }
-  has_many :blocked_friends, through: :pending_friendships, source: :friend 
+  has_many :blocked_friends, through: :blocked_friendships, source: :friend 
 
   has_many :accepted_friendships, class_name: 'Friendship',
                                  foreign_key: :user_id,
                                  conditions: { state: 'accepted' }
-  has_many :accepted_friends, through: :pending_friendships, source: :friend 
+  has_many :accepted_friends, through: :accepted_friendships, source: :friend 
 
  	def full_name
  		"#{first_name} #{last_name}"
@@ -61,4 +61,8 @@ class User < ActiveRecord::Base
 
  		"http://gravatar.com/avatar/#{hash}"
  	end
+
+  def has_blocked?(other_user)
+    blocked_friends.include?(other_user)
+  end
 end

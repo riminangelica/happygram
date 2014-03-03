@@ -8,9 +8,7 @@ Happygram::Application.routes.draw do
     get '/logout', to: 'devise/sessions#destroy', as: :logout
   end
 
-  devise_for :users, skip: [:sessions ]
-    resources :entries
-    get 'feed', to: 'entries#index', as: :feed
+  devise_for :users, skip: [:sessions]
 
   as :user do
     get "/login" => 'devise/sessions#new', as: :new_user_session
@@ -24,6 +22,9 @@ Happygram::Application.routes.draw do
       put :block
     end
   end
+
+  resources :entries
+    get 'feed', to: 'entries#index', as: :feed
 
   root to: 'entries#index'
 

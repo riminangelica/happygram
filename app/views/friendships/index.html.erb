@@ -3,30 +3,43 @@
 </div>
 
 <div>
-	<strong>Friend list:</strong>
-	<%= link_to 'Blocked', friendships_path(list: 'blocked') %>
-	<%= link_to 'Requested', friendships_path(list: 'requested') %>
-	<%= link_to 'Accepted', friendships_path(list: 'accepted') %>
-	<%= link_to 'Pending', friendships_path(list: 'pending') %>
+	<% 'active' if params[:list] == '' || params[:list].blank? %>
+		<%= link_to 'All Friends', friendships_path %>
+	
+	<% 'active' if params[:list] == 'blocked' %> | 
+		<%= link_to 'Blocked', friendships_path(list: 'blocked') %>
+	
+	<% 'active' if params[:list] == 'requested' %> | 
+		<%= link_to 'Requested', friendships_path(list: 'requested') %>
+	
+	<% 'active' if params[:list] == 'accepted' %> | 
+		<%= link_to 'Accepted', friendships_path(list: 'accepted') %>
+	
+	<% 'active' if params[:list] == 'pending' %> | 
+		<%= link_to 'Pending', friendships_path(list: 'pending') %>
 </div>
 
-<% @friendships.each do |friendship| %>
-	<% friend = friendship.friend %>
-	<div id="<%= dom_id(friendship) %>" class="friend row">
-		<div class="span1">
-			<%= link_to image_tag(friend.gravatar_url), profile_path(friend) %>
+<hr>
+
+<div id="friend-list">
+	<% @friendships.each do |friendship| %>
+		<% friend = friendship.friend %>
+		<div id="<%= dom_id(friendship) %>" class="friend row">
+			<div class="span1">
+				<%= link_to image_tag(friend.gravatar_url), profile_path(friend) %>
+			</div>
+			<div class="span7">
+				<strong><%= friend.full_name %></strong><br />
+				<% if friendship.pending? %>
+					<em>Awaiting confirmation.</em> <%= link_to "Cancel request", edit_friendship_path(friendship.friend.handle) %>.
+				<% end %>
+				<% if friendship.requested? %>
+					<em>Friendship requested.</em> <%= link_to "Accept friendship", edit_friendship_path(friendship.friend.handle) %>.
+				<% end %>
+				<% if friendship.accepted? %>
+					<em>Friendship started <%= friendship.updated_at %>.</em> <%= link_to "Update friendship", edit_friendship_path(friendship.friend.handle) %>.
+				<% end %>
+			</div>
 		</div>
-		<div class="span7">
-			<strong><%= friend.full_name %></strong><br />
-			<% if friendship.pending? %>
-				<em>Awaiting confirmation.</em> <%= link_to "Cancel request", edit_friendship_path(friendship.friend.handle) %>.
-			<% end %>
-			<% if friendship.requested? %>
-				<em>Friendship requested.</em> <%= link_to "Accept friendship", edit_friendship_path(friendship.friend.handle) %>.
-			<% end %>
-			<% if friendship.accepted? %>
-				<em>Friendship started <%= friendship.updated_at %>.</em> <%= link_to "Update friendship", edit_friendship_path(friendship.friend.handle) %>.
-			<% end %>
-		</div>
-	</div>
-<% end %>
+	<% end %>
+</div>

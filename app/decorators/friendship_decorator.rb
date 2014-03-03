@@ -11,7 +11,20 @@ class FriendshipDecorator < Draper::Decorator
 		when 'pending'
 			"Friend request pending."
 		when 'accepted'
-			"You are friends #{model.friend.first_name}."
+			"You are friends with #{model.friend.first_name}."
+    end
+  end
+
+  def update_action_verbiage
+    case model.state
+    when 'pending'
+      'Delete'
+    when 'requested'
+      'Accept'
+    when 'accepted'
+      'Update'
+    when 'blocked'
+      'Unblock'
     end
   end
 end

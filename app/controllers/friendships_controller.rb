@@ -3,11 +3,7 @@ class FriendshipsController < ApplicationController
 	respond_to :html, :json
 
 	def index
-		100.times { puts "blah" }
-		
 		@friendships = FriendshipDecorator.decorate_collection(friendship_association.all)
-		100.times { puts "blah" }
-		100.times { puts @friendships }
 		respond_with @friendships
 	end
 
@@ -22,7 +18,7 @@ class FriendshipsController < ApplicationController
 	end
 
 	def block
-		@friendship = current_user.friendships.find(params [:id])
+		@friendship = current_user.friendships.find(params[:id])
 		if @friendship.block!
 			flash[:success] = "You have blocked #{@friendship.friend.first_name}."
 		else
@@ -69,10 +65,7 @@ class FriendshipsController < ApplicationController
 
 	def edit
 			@friend = User.where(handle: params[:id]).first
-			100.times { puts "blah" }
-			100.times { puts @friend.id }
 			@friendship = current_user.friendships.where(friend_id: @friend.id).first.decorate
-			100.times { puts @friendship }
 	end
 
 	def destroy

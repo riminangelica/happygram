@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  #before_action :set_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /entries
   # GET /entries.json
@@ -11,6 +11,12 @@ class EntriesController < ApplicationController
   # GET /entries/1
   # GET /entries/1.json
   def show
+    @entry = Entry.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @entry }
+    end
   end
 
   # GET /entries/new
@@ -20,6 +26,7 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
+    @entry = current_user.entries.find(params[:id])
   end
 
   # POST /entries
