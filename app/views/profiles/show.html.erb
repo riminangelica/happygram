@@ -1,25 +1,34 @@
-<div class="page-header">
-	<h1><%= @user.username %></h1>
-	<% if signed_in? %>
-		<div id="friend-status">
-			<% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-				<%= link_to "Edit Friendship", edit_friendship_path(friend_id: @user), class: 'btn' %>
-			<% else %>
-				<%= link_to "Add Friend", new_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
-			<% end %>
-		</div>
+<%= page_header do %>
+  <h1>
+    <%= avatar_profile_link @user, {}, class: '' %>
+    <%= @user.full_name %>
+  </h1>
+  <% if signed_in? && @user != current_user %>
+	<div id="friend-entry">
+	  <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+	    <%= link_to "Edit Friendship", edit_friendship_path(friend_id: @user), class: 'btn' %>
+	  <% else %>
+	    <%= link_to "Add Friend", new_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+	  <% end %>
+	</div>
 	<% end %>
-</div>
- 
-<% if @entries %>
-	<% @entries.each do |entry| %>
-		<div class="well">
-			<strong><%= entry.title %></strong>
-			<hr />
-			<%= entry.photo %>
-			<div class="meta">
-		    <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %>
-		  </div>  
-		</div>
-	<% end %>
+<% end %>
+
+
+
+<br />
+
+<% if @entries.count > 0 %>
+  <h3><%= @user.first_name %>'s entry updates:</h3>
+  <% @entries.each do |entry| %>
+    <div class="well">
+      <strong><%= entry.title %></strong>
+      <p><%= entry.photo %><br>
+      <%= entry.description %></p>
+      <hr />
+      <%= link_to time_ago_in_words(entry.created_at), entry_path(entry) %> ago
+    </div>
+  <% end %>
+<% else %>
+  <h3>No posts yet. :(</h3>
 <% end %>

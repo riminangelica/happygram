@@ -3,11 +3,37 @@
 </div>
 
 <ul class="nav nav-pills" id="friend-list-filter">
-  <li class="<%= 'active' if params[:list] == '' || params[:list].blank? %>"><%= link_to 'All', friendships_path %></li>  
-  <li class="<%= 'active' if params[:list] == 'blocked' %>"><%= link_to 'Blocked', friendships_path(list: 'blocked') %></li>  
-  <li class="<%= 'active' if params[:list] == 'requested' %>"><%= link_to 'Requested', friendships_path(list: 'requested') %></li>
-  <li class="<%= 'active' if params[:list] == 'accepted' %>"><%= link_to 'Accepted', friendships_path(list: 'accepted') %></li>
-  <li class="<%= 'active' if params[:list] == 'pending' %>"><%= link_to 'Pending', friendships_path(list: 'pending') %></li>
+  <li class="<%= 'active' if params[:list] == '' || params[:list].blank? %>">
+    <%= link_to 'All', friendships_path %>
+  </li>  
+  <li class="<%= 'active' if params[:list] == 'blocked' %>">
+    <% if @blocked.count > 0 %>
+      <%= link_to "Blocked (#{@blocked.count})", friendships_path(list: 'blocked') %>
+    <% else %>
+      <%= link_to "Blocked", friendships_path(list: 'blocked') %>
+    <% end %>
+  </li>  
+  <li class="<%= 'active' if params[:list] == 'requested' %>">
+    <% if @requested.count > 0 %>
+      <%= link_to "Requested (#{@requested.count})", friendships_path(list: 'requested') %>
+    <% else %>
+      <%= link_to "Requested", friendships_path(list: 'requested') %>
+    <% end %>
+  </li>
+  <li class="<%= 'active' if params[:list] == 'accepted' %>">
+    <% if @accepted.count > 0 %>
+      <%= link_to "Accepted (#{@accepted.count})", friendships_path(list: 'accepted') %>
+    <% else %>
+      <%= link_to "Accepted", friendships_path(list: 'accepted') %>
+    <% end %>
+  </li>
+  <li class="<%= 'active' if params[:list] == 'pending' %>">
+    <% if @pending.count > 0 %>
+      <%= link_to "Pending (#{@pending.count})", friendships_path(list: 'pending') %>
+    <% else %>
+      <%= link_to "Pending", friendships_path(list: 'pending') %>
+    <% end %>
+  </li>
 </ul>
 
 <hr />

@@ -60,7 +60,7 @@ class Friendship < ActiveRecord::Base
 	end
 
 	def delete_mutual_friendship!
-		mutual_friendship.delete!
+		mutual_friendship.delete
 	end
 
 	def block_mutual_friendship!

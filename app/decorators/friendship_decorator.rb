@@ -12,6 +12,10 @@ class FriendshipDecorator < Draper::Decorator
 			"Friend request pending."
 		when 'accepted'
 			"You are friends with #{model.friend.first_name}."
+    when 'blocked'
+      "You blocked this user."
+    when 'requested'
+      "Awaiting confirmation."
     end
   end
 
@@ -20,7 +24,7 @@ class FriendshipDecorator < Draper::Decorator
     when 'pending'
       'Delete'
     when 'requested'
-      'Accept'
+      'Respond'
     when 'accepted'
       'Update'
     when 'blocked'

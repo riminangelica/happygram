@@ -21,7 +21,9 @@ class EntriesController < ApplicationController
 
   # GET /entries/new
   def new
-    @entry = Entry.new
+    @entry = current_user.entries.new
+    @entry.build_document
+
   end
 
   # GET /entries/1/edit
@@ -68,6 +70,7 @@ class EntriesController < ApplicationController
   # DELETE /entries/1
   # DELETE /entries/1.json
   def destroy
+    @entry = current_user.entries.find(params[:id])
     @entry.destroy
     respond_to do |format|
       format.html { redirect_to entries_url }

@@ -1,24 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="span8 offset2">
+    <%= page_header do %>
+      <h1>
+        <%= avatar_profile_link @entry.user %>
+        <%= @entry.user.full_name %>
+        <small><%= time_ago_in_words(@entry.created_at) + " ago" %></small>
+      </h1>
+    <% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @entry.title %>
-</p>
+    <strong><%= @entry.title %></strong>
 
-<p>
-  <strong>Description:</strong>
-  <%= @entry.description %>
-</p>
+    <p>
+    	<%= @entry.photo %><br>
+      <%= @entry.description %>
+    </p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @entry.photo %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @entry.user.username %>
-</p>
-
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+    <hr />
+    <div class="meta">
+      <%= link_to 'Back', entries_path %>
+      <% if signed_in? && @entry.user == current_user %>
+        |
+        <%= link_to "Edit", edit_entry_path(@entry) %> | 
+        <%= link_to "Delete", @entry, method: :delete, data: { confirm: "Are you sure your want to delete this entry?"} %>
+      <% end %>
+    </div>
+  </div>
+</div>

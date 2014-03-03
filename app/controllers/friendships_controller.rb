@@ -4,6 +4,11 @@ class FriendshipsController < ApplicationController
 
 	def index
 		@friendships = FriendshipDecorator.decorate_collection(friendship_association.all)
+		@blocked = current_user.friendships.where(state: :blocked)
+		@accepted = current_user.friendships.where(state: :accepted)
+		@requested = current_user.friendships.where(state: :requested)
+		@pending = current_user.friendships.where(state: :pending)
+
 		respond_with @friendships
 	end
 
@@ -25,18 +30,6 @@ class FriendshipsController < ApplicationController
 			flash[:error] = "That friendship could not be blocked."
 		end
 		redirect_to friendships_path
-	end
-
-	def unblock
-		def block
-		@friendship = current_user.friendships.find(params[:id])
-		if @friendship.unblock!
-			flash[:success] = "You have unblocked #{@friendship.friend.first_name}."
-		else
-			flash[:error] = "That friendship could not be blocked."
-		end
-		redirect_to friendships_path
-	end
 	end
 
 	def new

@@ -17,10 +17,12 @@
           <p><%= entry.description %></p>
           <div class="meta">
             <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %>
-            <span class="admin"> | 
-             <%= link_to "Edit", edit_entry_path(entry) %> | 
-              <%= link_to "Delete", entry, method: :delete, confirm: "Are you sure you want to delete this entry?" %>
-            </span>
+            <% if signed_in? && entry.user == current_user %>
+              <span class="admin"> | 
+               <%= link_to "Edit", edit_entry_path(entry) %> | 
+                <%= link_to "Delete", entry, method: :delete, confirm: "Are you sure you want to delete this entry?" %>
+              </span>
+            <% end %>
           </div>
         </div>
       </div>
