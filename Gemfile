@@ -20,6 +20,16 @@ gem 'js-routes'
 
 gem "paperclip", "~> 3.0"
 
+gem "the_comments", "~> 2.2.1"
+
+gem 'haml'                # or gem 'slim'
+gem 'awesome_nested_set'  # or same gem
+
+gem 'RedCloth'
+gem 'sanitize'
+#gem 'MySmilesProcessor'
+
+
 group :test do
 	gem 'shoulda'
 	gem 'factory_girl_rails'
