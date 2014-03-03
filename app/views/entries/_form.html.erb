@@ -14,9 +14,6 @@
   <%= f.input :title %>
   <%= f.input :description, input_html: { rows: 4, class: 'input-xxlarge' } %>
   <%= f.input :photo %>
-  <%= f.fields_for :document do |d| %>
-    <%= d.input :attachment, as: :file %>
-  <% end %>
 
   <div class="form-actions">
     <%= f.button :submit %>

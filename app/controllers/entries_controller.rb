@@ -22,8 +22,6 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = current_user.entries.new
-    @entry.build_document
-
   end
 
   # GET /entries/1/edit
