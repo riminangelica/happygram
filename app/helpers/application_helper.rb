@@ -9,6 +9,10 @@ module ApplicationHelper
 			"alert-error"
 		when :notice
 			"alert-success"
+		when :error
+			"alert-error"
+		when :success
+			"alert-success"
 		else
 			""
 		end

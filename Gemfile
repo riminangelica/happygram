@@ -18,6 +18,8 @@ gem 'draper'
 
 gem 'js-routes'
 
+gem "paperclip", "~> 3.0"
+
 group :test do
 	gem 'shoulda'
 	gem 'factory_girl_rails'
