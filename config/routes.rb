@@ -28,6 +28,9 @@ Happygram::Application.routes.draw do
   resources :entries
     get 'feed', to: 'entries#index', as: :feed
 
+    resources :comments
+
+  
   root to: 'welcome#index'
 
   get '/:id', to: 'profiles#show', as: 'profile'

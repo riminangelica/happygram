@@ -1,14 +1,20 @@
-<p id="notice"><%= notice %></p>
+<% title "Comment" %>
 
 <p>
   <strong>Content:</strong>
   <%= @comment.content %>
 </p>
-
 <p>
-  <strong>User:</strong>
-  <%= @comment.user_id %>
+  <strong>Commentable:</strong>
+  <%= @comment.commentable_id %>
+</p>
+<p>
+  <strong>Commentable Type:</strong>
+  <%= @comment.commentable_type %>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<p>
+  <%= link_to "Edit", edit_comment_path(@comment) %> |
+  <%= link_to "Destroy", @comment, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", comments_path %>
+</p>

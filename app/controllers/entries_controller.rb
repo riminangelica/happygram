@@ -12,6 +12,8 @@ class EntriesController < ApplicationController
   # GET /entries/1.json
   def show
     @entry = Entry.find(params[:id])
+    @commentable = find_commentable
+    @comment = Comment.new(:entry => @entry)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -76,6 +78,24 @@ class EntriesController < ApplicationController
     end
   end
 
+  def add_entry_comment
+      @entry = Entry.find(params[:id])
+      @comment = Comment.new
+      @comment.user_id = current_user_account.id
+      @comment.entry_id = @entry.id
+      render "comments/new"
+  end
+
+  def edit_entry_comment
+      @entry = Entry.find(params[:id])
+      @comment = Comment.find(params[:entry_comment_id])
+      if @comment.user_id != current_user_account.id
+        @comment = nil
+      end
+      render "comments/edit"
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
@@ -85,5 +105,14 @@ class EntriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_params
       params.require(:entry).permit(:title, :description, :photo, :user_id)
+    end
+    
+    def find_commentable
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return $1.classify.constantize.find(value)
+        end
+      end
+      nil
     end
 end

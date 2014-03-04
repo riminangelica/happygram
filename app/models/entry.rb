@@ -2,8 +2,8 @@ class Entry < ActiveRecord::Base
 	attr_accessible :title, :description, :photo, :user_id
 	
   belongs_to :user
-  has_many :comments
-	
+  has_many :comments, :as => :commentable
+    
 	validates :title, presence: :true
 	validates :user_id, presence: :true	
 	validates :photo, attachment_presence: true
