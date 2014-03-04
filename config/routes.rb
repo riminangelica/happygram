@@ -1,10 +1,9 @@
 Happygram::Application.routes.draw do
-  resources :comments
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get "profiles/show"
-  
+
+  resources :comments
 
   as :user do
     get '/login', to: 'devise/sessions#new', as: :login
@@ -30,8 +29,11 @@ Happygram::Application.routes.draw do
 
   resources :entries
     get 'feed', to: 'entries#index', as: :feed
+    get "/entries/:id/add_entry_comment", to: "entries#add_entry_comment", as: :add_entry_comment
+    get "/entries/:id/edit_entry_comment/:entry_comment_id", to: "entries#edit_entry_comment", as: :edit_entry_comment
 
-  root to: 'welcome#index'  
+
+  root to: 'entries#index'  
 
   get '/:id', to: 'profiles#show', as: 'profile'
 
