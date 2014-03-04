@@ -13,18 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140303153506) do
 
-  create_table "documents", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
-  end
-
-  add_index "documents", ["user_id"], name: "index_documents_on_user_id"
-
   create_table "entries", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -32,7 +20,6 @@ ActiveRecord::Schema.define(version: 20140303153506) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "document_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -51,13 +38,6 @@ ActiveRecord::Schema.define(version: 20140303153506) do
 
   add_index "friendships", ["state"], name: "index_friendships_on_state"
   add_index "friendships", ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id"
-
-  create_table "statuses", force: true do |t|
-    t.string   "name"
-    t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "users", force: true do |t|
     t.string   "first_name"
