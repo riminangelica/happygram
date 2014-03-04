@@ -1,5 +1,11 @@
-<% if signed_in? %>
-	<h1>WELCAAAAMMM</h1>
-<% else %>
-	<h1>LOG IN PLS</h1>
-<%end %>
+<div id="welcome">
+	<% if signed_in? %>
+		<h1>WELCAAAAAM</h1>
+	<% else %>
+	<div style = "height: 350px"></div>
+	<div id="subwelcome">
+		<h1 style="color: #ffffff">A new way to share your happiness</h1>
+		<button class="btn-login" href="<% link_to "Log In", login_path %>">Log In</button>
+	</div>
+	<% end %>
+</div>
