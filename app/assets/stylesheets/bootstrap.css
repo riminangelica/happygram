@@ -229,7 +229,7 @@ body {
   color: #333333;
   background-color: #ffffff;
   /* needs padding for flash notifications */
-  padding: 100px;
+  padding: 89px;
   font-family: 'Montserrat';
 }
 
@@ -763,6 +763,11 @@ h6 small {
   font-weight: normal;
   line-height: 1;
   color: #999999;
+}
+
+h1 white
+{
+
 }
 
 h1,
@@ -4418,7 +4423,7 @@ input[type="submit"].btn.btn-mini {
   font-size: 20px;
   font-weight: 200;
   color: #777777;
-  text-shadow: 0 1px 0 #ffffff;
+  /*text-shadow: 0 1px 0 #ffffff;*/
 }
 
 .navbar .brand:hover,
@@ -6187,8 +6192,6 @@ a.badge:focus {
 #login-logo img
 {
   margin-left: 20px;
-<<<<<<< HEAD
-=======
   opacity:1;
 }
 
@@ -6219,4 +6222,81 @@ a.badge:focus {
   border:1px solid black;
   opacity:0.9;
   padding: 20px;
+}
+
+#welcome
+{
+  position: absolute; 
+  left: 0; 
+  width: 100%; 
+  height: 100%;
+  margin: 0 auto; 
+  background: url('HOME/HOME.jpg') no-repeat center center; 
+  background-position: center; 
+  /*background-size: 1024px 639px;*/
+  min-width: 100%; 
+  max-width: 100%; 
+  background-size:cover;
+}
+
+#subwelcome
+{
+  position: ; 
+  left: 0; 
+  width: 80%; 
+  margin: 0 auto; 
+  max-width: 100%;
+  background-color: rgba(35,35,35,.5);
+  /*background-size: 1024px 639px;*/
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-login
+{
+  border: 2px solid #fff;
+  color: #fff;
+  overflow: : hidden;
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  cursor: pointer;
+  
+}
+
+.btn-login:active
+{
+  border-color: #fff;
+  color: #232323;
+}
+
+.btn-login:hover
+{
+  background: #232323;
+}
+
+.btn-login:before
+{
+  position: absolute;
+  height: 100%;
+  font-size: 125%;
+  line-height: 3.5;
+  color: #fff;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  left:70%;
+  opacity: 0;
+  top: 0;
+}
+
+.btn-login:active:before
+{
+  color: #232323;
+}
+
+.btn-login:hover:before;
+{
+  left:80%;
+  opacity:1;
 }

@@ -16,7 +16,7 @@
 			<div class="container">
 				<span class="brand">
 					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), "#" %></span>
-				<ul class="nav pull-right">
+				<ul class="nav pull-right" style ="font-family:'Montserrat';">
 					<% if user_signed_in? %>
 						<li><%= link_to "Friends", friendships_path %></li>
 						<li><%= link_to (image_tag("HEADER_FOOTER/Home.png")+"Feed").html_safe, feed_path %></li>
