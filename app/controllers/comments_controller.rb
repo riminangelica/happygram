@@ -1,5 +1,5 @@
 class CommentsController < InheritedResources::Base
-	before_filter :authenticate_user_account!
+	before_filter :authenticate_user!
   def index
       @comments = Comment.all
       redirect_to entries_path
@@ -11,11 +11,12 @@ class CommentsController < InheritedResources::Base
 
   def new
       @comment = Comment.new
-      @comment.user_id = current_user_account.id
+      @comment.user_id = current_user.id
   end
 
   def create
       @comment = Comment.new(comment_params)
+      @entry = Entry.find_by_id(params[:id])
 
       if @comment.save
         redirect_to :controller => 'entries', :action => 'show', :id => @comment.entry_id
@@ -26,7 +27,7 @@ class CommentsController < InheritedResources::Base
 
   def edit
       @comment = Comment.find(params[:id])
-      if @comment.user_id != current_user_account.id
+      if @comment.user_id != current_user.id
         @comment = nil
       end
   end
@@ -43,7 +44,7 @@ class CommentsController < InheritedResources::Base
 
   def destroy
       @comment = Comment.find(params[:id])
-      if @comment.user_id = current_user_account.id
+      if @comment.user_id = current_user.id
         @comment.destroy
         redirect_to :controller => 'entries', :action => 'show', :id => @comment.entry_id
       end

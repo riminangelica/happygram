@@ -29,9 +29,10 @@ Happygram::Application.routes.draw do
 
   resources :entries
     get 'feed', to: 'entries#index', as: :feed
-    get "/entries/:id/add_entry_comment", to: "entries#add_entry_comment", as: :add_entry_comment
-    get "/entries/:id/edit_entry_comment/:entry_comment_id", to: "entries#edit_entry_comment", as: :edit_entry_comment
-
+    
+  get "/entries/:id/add_entry_comment", to: "entries#add_entry_comment", as: :add_entry_comment
+  get "/entries/:id/edit_entry_comment/:entry_comment_id", to: "entries#edit_entry_comment", as: :edit_entry_comment
+  
 
   root to: 'entries#index'  
 

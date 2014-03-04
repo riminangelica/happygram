@@ -6,9 +6,9 @@ class EntriesController < ApplicationController
   # GET /entries.json
   def index
     @entries = Entry.all.order("created_at DESC")
-    # @friendships = Friendship.where("(user_account_id = ? AND status='Accepted')", current_user_account.id)
-    @friendships = FriendshipDecorator.decorate_collection(friendship_association.all)
-    @accepted = current_user.friendships.where(state: :accepted)
+    # @friendships = Friendship.where("(user_account_id = ? AND status='Accepted')", current_user.id)
+    # @friendships = FriendshipDecorator.decorate_collection(friendship_association.all)
+    # @accepted = current_user.friendships.where(state: :accepted)
   end
 
   # GET /entries/1
@@ -82,7 +82,7 @@ class EntriesController < ApplicationController
   def add_entry_comment
       @entry = Entry.find(params[:id])
       @comment = Comment.new
-      @comment.user_id = current_user_account.id
+      @comment.user_id = current_user.id
       @comment.entry_id = @entry.id
       render "comments/new"
   end
@@ -90,7 +90,7 @@ class EntriesController < ApplicationController
   def edit_entry_comment
       @entry = Entry.find(params[:id])
       @comment = Comment.find(params[:entry_comment_id])
-      if @comment.user_id != current_user_account.id
+      if @comment.user_id != current_user.id
         @comment = nil
       end
       render "comments/edit"

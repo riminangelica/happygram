@@ -24,5 +24,17 @@
         <%= link_to "Delete", @entry, method: :delete, data: { confirm: "Are you sure your want to delete this entry?"} %>
       <% end %>
     </div>
+    <hr>
+    <%= link_to "Add Comment", add_entry_comment_path(@entry.id), class: "btn" %>
+    <hr>
+    <% @entry.comments.each do |post| %>
+      <% @u = User.find(post.user_id) %>
+      <%= @u.full_name %>
+      <%= post.content %>
+      <% if current_user.id == post.user_id %>
+        <%= link_to "Edit", edit_entry_comment_path(@entry.id,post.id) %>
+        <%= link_to "Delete", comment_path(post.id), method: :delete, confirm: "Are you sure?" %>
+      <% end %>
+    <% end %>
   </div>
 </div>
