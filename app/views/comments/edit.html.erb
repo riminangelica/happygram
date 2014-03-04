@@ -1,8 +1,6 @@
-<% title "Edit Comment" %>
+<h1>Editing comment</h1>
 
-<%= render :partial => 'form' %>
+<%= render 'form' %>
 
-<p>
-  <%= link_to "Show", @comment %> |
-  <%= link_to "View All", comments_path %>
-</p>
+<%= link_to 'Show', @comment %> |
+<%= link_to 'Back', comments_path %>
