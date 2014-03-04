@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
   # GET /entries.json
   def index
     @entries = Entry.all.order("created_at DESC")
+  
     # @friendships = Friendship.where("(user_account_id = ? AND status='Accepted')", current_user.id)
     # @friendships = FriendshipDecorator.decorate_collection(friendship_association.all)
     # @accepted = current_user.friendships.where(state: :accepted)

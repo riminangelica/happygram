@@ -15,12 +15,12 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<span class="brand">
-					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), "#" %></span>
+					<%= link_to (image_tag "HEADER_FOOTER/HeaderLogo.png"), root_path %></span>
 				<ul class="nav pull-right" style ="font-family:'Montserrat';">
 					<% if user_signed_in? %>
-						<li><%= link_to "Friends", friendships_path %></li>
 						<li><%= link_to (image_tag("HEADER_FOOTER/Home.png")+"Feed").html_safe, feed_path %></li>
-						<li><%= link_to (image_tag(current_user.gravatar_url, style: "width:20px")+ " " +current_user.full_name).html_safe, "/#{current_user.handle}" %>
+						<li><%= link_to "Friends", friendships_path %></li>
+						<li><%= link_to (image_tag(current_user.profile_picture.url, class: "avatar-nav")+ " " +current_user.full_name).html_safe, "/#{current_user.handle}" %>
 						</li>
 						<li><%= link_to (image_tag("HEADER_FOOTER/Logout.png")+"Log out"), logout_path, confirm: "Are you sure you want to logout? :(" %>
 						</li>

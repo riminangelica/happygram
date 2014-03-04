@@ -12,11 +12,23 @@
           <%= link_to image_tag(entry.user.gravatar_url), profile_path(entry.user.handle) %>
         </div>
         <div class="span7">
-          <strong><%= entry.title %></strong> by <%= entry.user.username %>
-          <p><%= image_tag entry.photo.url %></p>
-          <p><%= entry.description %></p>
+          <strong><%= entry.title %></strong> by <%= link_to entry.user.full_name, profile_path(entry.user.handle) %>
+          <p>
+            <div class="happypost" style="background-image: url('<%= entry.photo.url %>');">
+              <%= link_to(image_tag(entry.photo.url), profile_path(entry.user.handle), :style => "width:500px;") %></p>
+            </div>
+          </p>
+          <hr><%= link_to entry.user.username, profile_path(entry.user.handle) %> <%= entry.description %>
+          <hr>
           <div class="meta">
-            <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %>
+            <%= link_to "#{time_ago_in_words(entry.created_at)} ago", entry %> | 
+            <% if entry.comments.count == 1 %>
+              <%= entry.comments.count %> comment
+            <% elsif entry.comments.count > 1 %>
+              <%= entry.comments.count %> comments
+            <% end %>
+
+      
             <% if signed_in? && entry.user == current_user %>
               <span class="admin"> | 
                <%= link_to "Edit", edit_entry_path(entry) %> | 

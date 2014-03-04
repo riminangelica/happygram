@@ -1,34 +1,56 @@
-<%= page_header do %>
-  <h1>
-    <%= avatar_profile_link @user, {}, class: '' %>
-    <%= @user.full_name %>
-  </h1>
-	<div id="friend-entry">
-    <% if @user.friends.count > 0 %>
-      <%= @user.friends.count %> Friends<br>
-    <% else %>
-      <%= @user.first_name %> currently has no friends... Add them now!<br>
-    <% end %>
-    <% if signed_in? && @user != current_user %>
-  	  <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-  	    <%= link_to "Edit Friendship", edit_friendship_path(friend_id: @user), class: 'btn' %>
-  	  <% else %>
-  	    <%= link_to "Add #{@user.first_name}", new_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
-  	  <% end %>
-    <% end %>
-	</div>
-<% end %>
+<div class="row">
+  <div class="span8 offset2">
+  <div class="row">
+    <div class="span1">
+      <div class="happyprofile" style="background-image: url('<%= @user.profile_picture.url %>');">
+        <%= link_to(image_tag(@user.profile_picture.url), profile_path(@user.handle), :style => "width:50px;") %>
+      </div>
+    </div>
+    <div class="span6">
+      <h1>
+        <%= @user.full_name %>
+      </h1>
+    </div>
+  </div>  
+  <div class="row">
+  	<div id="friend-entry">
+      <div class="span1"></div>
+      <div class="span6">
+        <% if signed_in? && @user != current_user %>
+          
+          <% if @user.friends.count > 0 %>
+            <%= @user.friends.count %> Friends<br>
+          <% else %>
+            <%= @user.first_name %> currently has no friends... Add them now!<br>
+            <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+              <%= link_to "Edit Friendship", edit_friendship_path(friend_id: @user), class: 'btn' %>
+            <% else %>
+              <%= link_to "Add #{@user.first_name}", new_friendship_path(friend_id: @user), class: 'btn', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% if @user.friends.count > 0 %>
+            You have <%= @user.friends.count %> friends<br>
+          <% else %>
+            You have no friends... aww.<br>
+          <% end %>
+        <% end %>
+        
+      </div>
+  	</div>
+  </div>
 
 
 
 <br />
 
 <% if @entries.count > 0 %>
-  <h3><%= @user.first_name %>'s entry updates:</h3>
   <% @entries.each do |entry| %>
-    <div class="well">
+    <div class="well" style="width:515px;">
       <strong><%= entry.title %></strong>
-      <p><%= entry.photo %><br>
+      <div class="happypost" style="background-image: url('<%= entry.photo.url %>');">
+        <%= link_to(image_tag(entry.photo.url), profile_path(entry.user.handle), :style => "width:500px;") %></p>
+      </div><hr>
       <%= entry.description %></p>
       <hr />
       <%= link_to time_ago_in_words(entry.created_at), entry_path(entry) %> ago
@@ -37,3 +59,5 @@
 <% else %>
   <h3>No posts yet. :(</h3>
 <% end %>
+</div>
+</div>

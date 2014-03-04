@@ -17,7 +17,7 @@
   <%= f.input :profile_picture %>
   <div class="controls">
     <% if current_user.profile_picture? %>
-      <%= image_tag current_user.profile_picture.url, style: "width:200px;" %>
+      <%= image_tag current_user.profile_picture.url, class: "center-cropped" %>
     <% end %>
   </div><br>
   <%= f.input :contact_number %>

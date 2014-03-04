@@ -1,9 +1,11 @@
 <div class="row">
-  <div class="span8 offset2">
+  <div class="span7 offset1">
     <%= page_header do %>
       <h1>
-        <%= avatar_profile_link @entry.user %>
-        <%= @entry.user.full_name %>
+        <div class="happyprofile" style="background-image: url('<%= @entry.user.profile_picture.url %>');">
+        <%= link_to(image_tag(@entry.user.profile_picture.url), profile_path(@entry.user.handle), :style => "width:50px;") %>
+      </div>
+        <%= @entry.user.full_name %><br>
         <small><%= time_ago_in_words(@entry.created_at) + " ago" %></small>
       </h1>
     <% end %>
@@ -11,7 +13,9 @@
     <strong><%= @entry.title %></strong>
 
     <p>
-    	<%= image_tag @entry.photo.url %><br>
+    	<div class="happypost" style="background-image: url('<%= @entry.photo.url %>');">
+        <%= link_to(image_tag(@entry.photo.url), profile_path(@entry.user.handle), :style => "width:500px;") %></p>
+      </div><hr><br>
       <%= @entry.description %>
     </p>
 
@@ -25,16 +29,22 @@
       <% end %>
     </div>
     <hr>
-    <%= link_to "Add Comment", add_entry_comment_path(@entry.id), class: "btn" %>
-    <hr>
+    <h2>Comments</h2>
+    <div class="well">
     <% @entry.comments.each do |post| %>
       <% @u = User.find(post.user_id) %>
-      <%= @u.full_name %>
+      <%= link_to @u.full_name, profile_path(@u.handle) %><br>
       <%= post.content %>
-      <% if current_user.id == post.user_id %>
-        <%= link_to "Edit", edit_entry_comment_path(@entry.id,post.id) %>
-        <%= link_to "Delete", comment_path(post.id), method: :delete, confirm: "Are you sure?" %>
+      <% if signed_in? %>
+        <% if current_user.id == post.user_id %><br>
+          <%= link_to "Edit", edit_entry_comment_path(@entry.id,post.id) %>
+          <%= link_to "Delete", comment_path(post.id), method: :delete, confirm: "Are you sure?" %>
+        <% end %><hr>
       <% end %>
     <% end %>
+    <% if signed_in? %>
+    <%= link_to "Add Comment", add_entry_comment_path(@entry.id), class: "btn" %>
+    <% end %>
+  </div>
   </div>
 </div>

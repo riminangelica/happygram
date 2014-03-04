@@ -5574,6 +5574,102 @@ input[type="submit"].btn.btn-mini {
   transition: all 0.2s ease-in-out;
 }
 
+.center-cropped {
+  display: block;
+  padding: 4px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width: 100px;  
+  height: 100px; 
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.happypost {
+  display: block;
+  padding: 4px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width: 500px;  
+  height: 500px; 
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.happypost img {
+   max-height: 100%;
+   max-width: 100%;
+
+   /* IE 8 */
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   /* IE 5-7 */
+   filter: alpha(opacity=0);
+   /* modern browsers */
+   opacity: 0;
+}
+
+.happyprofile {
+  display: block;
+  padding: 4px;
+  line-height: 20px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width: 50px;  
+  height: 50px; 
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.happyprofile img {
+   max-height: 100%;
+   max-width: 100%;
+
+   /* IE 8 */
+   -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   /* IE 5-7 */
+   filter: alpha(opacity=0);
+   /* modern browsers */
+   opacity: 0;
+}
+
+.avatar-nav {
+  width: 25px;  
+  height: 25px; 
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
 a.thumbnail:hover,
 a.thumbnail:focus {
   border-color: #0088cc;
