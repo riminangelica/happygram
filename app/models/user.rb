@@ -23,7 +23,6 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
 
  	has_many :entries
-  has_many :comments
  	has_many :friendships
  	has_many :friends, through: :friendships,
                      conditions: { friendships: { state: 'accepted' } }

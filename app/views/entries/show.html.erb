@@ -24,15 +24,5 @@
         <%= link_to "Delete", @entry, method: :delete, data: { confirm: "Are you sure your want to delete this entry?"} %>
       <% end %>
     </div>
-    <h2>Add a comment:</h2>
-    <%= form_for([@entry, @entry.comments.build]) do |f| %>
-      <div class="field">
-        <%= f.label :content %><br />
-        <%= f.text_area :content %>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    <% end %>
   </div>
 </div>
