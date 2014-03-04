@@ -20,6 +20,8 @@ gem 'js-routes'
 
 gem "paperclip", "~> 3.0"
 
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 group :test do
 	gem 'shoulda'
 	gem 'factory_girl_rails'

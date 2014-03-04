@@ -1,4 +1,6 @@
 Happygram::Application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get "profiles/show"
   
 
@@ -14,7 +16,7 @@ Happygram::Application.routes.draw do
     get "/login" => 'devise/sessions#new', as: :new_user_session
     post "/login" => 'devise/sessions#create', as: :user_session
     delete "/logout" => 'devise/sessions#destroy', as: :destroy_user_session
-    root to: 'devise/sessions#new'
+    # root to: 'devise/sessions#new'
   end
 
   resources :friendships do
@@ -27,7 +29,7 @@ Happygram::Application.routes.draw do
   resources :entries
     get 'feed', to: 'entries#index', as: :feed
 
-  
+  root to: 'welcome#index'  
 
   get '/:id', to: 'profiles#show', as: 'profile'
 
