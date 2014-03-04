@@ -6191,8 +6191,11 @@ a.badge:focus {
 
 #login-logo img
 {
-  margin-left: 20px;
+  /*left: 20px;*/
+  margin: auto;
   opacity:1;
+  text-align: center;
+  display: block;
 }
 
 #signup
@@ -6201,7 +6204,7 @@ a.badge:focus {
   left: 0; 
   width: 100%; 
   margin: 0 auto; 
-  background: url('HOME/Picture1.jpg') no-repeat center center fixed; 
+  background: url('HOME/signupbg.jpg') no-repeat center center fixed; 
   background-position: center; 
   min-width: 100%; 
   max-width: 100%; 
@@ -6212,16 +6215,18 @@ a.badge:focus {
 #signup-content
 {
   width: 100%;
-  margin-left: 500px;
+  margin: 0 auto;
+  /*margin-left: 500px;*/
 }
 
 #signup-form
 {
-  width:300px;
+  width:50%;
   background-color:#ffffff;
   border:1px solid black;
   opacity:0.9;
   padding: 20px;
+  margin:0 auto;
 }
 
 #welcome
