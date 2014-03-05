@@ -6393,7 +6393,7 @@ a.badge:focus {
   color: #232323;
 }
 
-.btn-login:hover:before;
+.btn-login:hover:before
 {
   left:80%;
   opacity:1;
@@ -12706,7 +12706,7 @@ a.badge:focus {
   color: #232323;
 }
 
-.btn-login:hover:before;
+.btn-login:hover:before
 {
   left:80%;
   opacity:1;
